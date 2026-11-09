@@ -1,32 +1,32 @@
 # BarberPro SaaS em PHP
 
-Sistema SaaS para barbearias desenvolvido em PHP com estrutura MVC simples, autenticacao por sessao e banco MySQL.
+Sistema SaaS para barbearias desenvolvido em PHP com estrutura MVC simples, autenticação por sessão e banco MySQL.
 
 ## Funcionalidades
 
 - cadastro e login de barbearias
 - dashboard com indicadores operacionais
-- gestao de clientes
-- gestao de servicos
-- gestao de usuarios da equipe
-- controle de permissoes por perfil
-- cadastro, edicao e exclusao de agendamentos
-- atualizacao de status dos atendimentos
-- validacao de conflito de horarios
+- gestão de clientes
+- gestão de serviços
+- gestão de usuários da equipe
+- controle de permissões por perfil
+- cadastro, edição e exclusão de agendamentos
+- atualização de status dos atendimentos
+- validação de conflito de horários
 - agenda geral e minha agenda
-- configuracao de horario de funcionamento
+- configuração de horário de funcionamento
 - cadastro de pausas e indisponibilidade de profissionais
 - isolamento por `barbearia_id`
 
 ## Perfis de acesso
 
 - `admin`: acesso total ao sistema
-- `recepcao`: agenda, clientes, servicos e disponibilidade
-- `barbeiro`: visualizacao de clientes e acesso apenas a propria agenda
+- `recepcao`: agenda, clientes, serviços e disponibilidade
+- `barbeiro`: visualização de clientes e acesso apenas à própria agenda
 
 ## Tecnologias
 
-- PHP
+- PHP 8.0 ou superior
 - MySQL
 - PDO
 - Bootstrap
@@ -34,33 +34,37 @@ Sistema SaaS para barbearias desenvolvido em PHP com estrutura MVC simples, aute
 
 ## Estrutura do projeto
 
-- `barbearia/config`: conexao com banco e autenticacao
-- `barbearia/controllers`: regras de negocio e actions
+- `barbearia/config`: conexão com banco e autenticação
+- `barbearia/controllers`: regras de negócio e actions
 - `barbearia/models`: acesso ao banco
 - `barbearia/views`: interface do sistema
 - `barbearia/css`: estilos
-- `barbearia.sql`: estrutura completa do banco
+- `barbearia.sql`: script de criação do banco
 
 ## Como executar
 
 1. Importe o arquivo `barbearia.sql` no MySQL.
-2. Ajuste as credenciais em `barbearia/config/database.php`.
-3. Rode o projeto em um ambiente local com PHP, como XAMPP ou Laragon.
-4. Acesse `/barbearia/views/auth/login.php`.
+2. Para uma execução local, ajuste a conexão em [`barbearia/config/database.php`](barbearia/config/database.php) e mantenha as credenciais fora do Git.
+3. Com PHP 8.0 ou superior e a extensão `pdo_mysql` habilitada, execute `php -S localhost:8000` na raiz do repositório. O painel usa a expressão `match`, disponível a partir do PHP 8.0.
+4. Abra a [tela de login](http://localhost:8000/barbearia/views/auth/login.php). Para criar uma barbearia e seu usuário inicial, use a [tela de cadastro](http://localhost:8000/barbearia/views/auth/register.php).
 
 ## Recursos implementados
 
-- multi-barbearia com separacao por empresa
+- multi-barbearia com separação por empresa
 - dashboard adaptado por perfil
 - controle de equipe
-- validacao de expediente e pausas na agenda
-- restricao de acesso por tipo de usuario
-- manutencao completa de agendamentos
+- validação de expediente e pausas na agenda
+- restrição de acesso por tipo de usuário
+- manutenção completa de agendamentos
 
-## Proximos passos
+## Indicadores do painel
 
-- modulo financeiro
+O painel mostra contagens de agendamentos do dia por status, com recorte por profissional na visão do barbeiro. O cadastro de serviços registra preços. O painel ainda não soma esses preços como faturamento e o controle de pagamentos está previsto como evolução.
+
+## Próximos passos previstos
+
+- módulo financeiro
 - comandas e pagamentos
-- relatorios
-- historico completo de clientes
-- melhorias de seguranca e deploy
+- relatórios
+- histórico completo de clientes
+- melhorias de segurança e deploy
